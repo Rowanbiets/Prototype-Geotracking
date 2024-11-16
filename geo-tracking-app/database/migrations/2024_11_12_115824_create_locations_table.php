@@ -12,14 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('locations', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->decimal('latitude', 10, 7);
-            $table->decimal('longitude', 10, 7);
-            $table->timestamp('tracked_at')->useCurrent();
-            $table->timestamps();
+            $table->id(); // Primaire sleutel
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Verwijzing naar de gebruikers-tabel
+            $table->decimal('latitude', 10, 8); // Breedtegraad
+            $table->decimal('longitude', 11, 8); // Lengtegraad
+            $table->timestamps(); // Aangemaakt en bijgewerkt tijdstempels
         });
-
     }
 
     /**
